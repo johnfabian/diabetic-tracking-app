@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Frontend build output
+frontend/dist/
+
+# Python cache and virtual environments
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+backend/.venv/
+
+# Environment files (keep examples committed)
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
+
+# PGlite runtime data
+/db/data/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

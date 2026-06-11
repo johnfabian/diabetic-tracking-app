@@ -1,0 +1,21 @@
+{
+  "name": "glucolog",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Glucose + meal tracking for diabetics — React 19, FastAPI, PGlite, Claude vision",
+  "type": "module",
+  "packageManager": "pnpm@11.1.2",
+  "scripts": {
+    "start": "concurrently -n db,api,web -c blue,green,magenta --kill-others \"pnpm dev:db\" \"pnpm dev:api\" \"pnpm dev:web\"",
+    "dev": "pnpm start",
+    "dev:db": "node db/server.mjs",
+    "dev:api": "python -m uvicorn main:app --app-dir backend --port 8000 --reload",
+    "dev:web": "pnpm -C frontend dev",
+    "setup:app": "pnpm install && pip install -r backend/requirements.txt"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.3.0",
+    "@electric-sql/pglite-socket": "^0.0.9",
+    "concurrently": "^9.1.2"
+  }
+}
