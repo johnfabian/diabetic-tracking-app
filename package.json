@@ -11,6 +11,9 @@
     "dev:db": "node db/server.mjs",
     "dev:api": "python -m uvicorn main:app --app-dir backend --port 8000 --reload",
     "dev:web": "pnpm -C frontend dev",
+    "test": "pnpm test:api && pnpm test:web",
+    "test:api": "python -m pytest backend/tests -q",
+    "test:web": "pnpm -C frontend test",
     "setup:app": "pnpm install && pip install -r backend/requirements.txt"
   },
   "dependencies": {

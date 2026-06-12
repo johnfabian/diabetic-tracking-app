@@ -11,3 +11,11 @@ strictDepBuilds: true
 #trustPolicy: no-downgrade
 allowBuilds:
   esbuild: false
+
+# browserslist data refreshes near-daily, so its freshest release is always
+# younger than minimumReleaseAge — pin a compliant version instead of
+# excluding the package from the age check.
+overrides:
+  baseline-browser-mapping: 2.10.33
+  caniuse-lite: 1.0.30001793
+  electron-to-chromium: 1.5.364

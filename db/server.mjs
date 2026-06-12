@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const dataDir = join(here, "data");
+const dataDir = process.env.PGLITE_DATA_DIR ?? join(here, "data");
 
 const PORT = Number(process.env.PGLITE_PORT ?? 5332);
 const HOST = process.env.PGLITE_HOST ?? "127.0.0.1";

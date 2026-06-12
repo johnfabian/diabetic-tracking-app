@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 import ai
+import settings
 from db import db
 from schema import init_db
 
@@ -29,7 +30,7 @@ app = FastAPI(title="GlucoLog API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=settings.CORS_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -376,7 +377,6 @@ async def clear_checked():
 
 @app.get("/api/health")
 async def health():
-    import settings
     vision = settings.vision_status()
     return {
         "ok": True,

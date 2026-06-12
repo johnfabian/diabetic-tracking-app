@@ -21,6 +21,16 @@ DATABASE_URL = os.environ.get(
 # For real Postgres, raise it (e.g. 10) to get a connection pool.
 DB_MAX_CONNECTIONS = int(os.environ.get("DB_MAX_CONNECTIONS", "1"))
 
+# ── API ───────────────────────────────────────────────────────────────
+# Comma-separated list of origins allowed to call the API from a browser.
+CORS_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        "CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+    ).split(",")
+    if origin.strip()
+]
+
 # ── Vision / AI ───────────────────────────────────────────────────────
 # "anthropic" (default) or "openai" (any OpenAI-compatible endpoint:
 # OpenAI itself, Ollama, LM Studio, llama.cpp server, vLLM, OpenRouter…)

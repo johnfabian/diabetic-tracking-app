@@ -32,6 +32,21 @@ If one process dies the others shut down too, so a single Ctrl+C always leaves
 a clean slate. (`pnpm dev` is an alias for `pnpm start`; `pnpm dev:db`,
 `pnpm dev:api`, `pnpm dev:web` start the pieces individually.)
 
+The app opens on an animated welcome page; **Start tracking** takes you to the
+dashboard at `/dashboard`. The layout is responsive — sidebar navigation on
+desktop, a bottom tab bar on phones.
+
+## Tests
+
+```bash
+pnpm test            # backend (pytest) + frontend (vitest)
+pnpm test:api        # FastAPI endpoints against a throwaway PGlite instance
+pnpm test:web        # form actions, components and helpers (jsdom)
+```
+
+The backend suite spawns its own PGlite server on port 55432 with a temp data
+directory — it never touches `db/data/`.
+
 ## Features
 
 - 📷 **Photograph your glucometer** — the value *and the date/time shown on the
